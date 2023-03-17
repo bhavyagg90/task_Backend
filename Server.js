@@ -4,11 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 const app= express()
 const Auth = require('./Routes/Auth')
-const Post = require('./Routes/Posts')
-const Follow = require('./Routes/Follow')
-const UnFollow = require('./Routes/UnFollow')
-const Likes = require('./Routes/Likes')
-const Comment = require('./Routes/Comment')
+
 const GetUser = require('./Routes/GetUser')
 const Contact = require('./Routes/Contact')
 
@@ -65,11 +61,6 @@ app.post("/contact", (req, res) => {
  const { verifyToken } = require('./middleware/VerifyToken')
 app.use('/api', Auth)
 app.use('/api',Contact)
-app.use('/api', verifyToken,Post)
-app.use('/api', verifyToken,Follow)
-app.use('/api', verifyToken,UnFollow)
-app.use('/api', verifyToken,Likes)
-app.use('/api', verifyToken,Comment)
 app.use('/api', verifyToken,GetUser)
 
 const PORT = process.env.PORT
